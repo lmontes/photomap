@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "",
+      "properties": {
+        "name": "Pino de la Atalayuela",
+        "desc": "Tronco de pino singular junto a la casa de la Atalayuela",
+        "images": [
+          {
+            "url": "images/casa.jpg",
+            "thumbnail": "thumbnails/casa.jpg"
+          },
+          {
+            "url": "images/pino.jpg",
+            "thumbnail": "thumbnails/pino.jpg"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.221552,
+          39.521876
+        ]
+      }
+    }
+  ]
+}
