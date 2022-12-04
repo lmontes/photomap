@@ -6,6 +6,7 @@
         <div class="w-screen h-screen mx-auto">
             <photomap class="w-screen h-screen"></photomap>
         </div>
+        <div id="modals"></div>
     </div>
 </template>
 

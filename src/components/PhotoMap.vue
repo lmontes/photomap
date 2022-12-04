@@ -55,30 +55,7 @@
       v-if="selectedProperties != null"
       positioning="center"
     >
-      <template v-slot="slotProps">
-        <div class="bg-black p-3 rounded">
-          <h3 class="text-xl text-white">{{ selectedProperties.name }}</h3>
-          <p v-if="selectedProperties.desc !== null" class="text-slate-300">
-            {{ selectedProperties.desc }}
-          </p>
-          <p class="text-sm text-slate-500">
-            <i class="fa-solid fa-location-dot"></i> {{ selectedProperties.lat }}, {{selectedProperties.lon}}
-          </p>
-          <div
-            v-if="selectedProperties.images.length"
-            class="flex mt-3 gap-x-2"
-          >
-            <span
-              v-for="image in selectedProperties.images"
-              v-bind:key="image.url"
-            >
-              <a :href="image.url" target="__blank"
-                ><img class="h-28" :src="image.thumbnail"
-              /></a>
-            </span>
-          </div>
-        </div>
-      </template>
+      <detail-overlay :properties="selectedProperties"></detail-overlay>
     </ol-overlay>
   </ol-map>
 </template>
@@ -87,11 +64,15 @@
 import { ref, inject } from "vue";
 import { fromLonLat } from "ol/proj";
 import { GeoJSON } from "ol/format";
+import DetailOverlay from './DetailOverlay.vue';
 
 export default {
   name: "photomap",
   props: {
     refcat: String,
+  },
+  components: {
+    DetailOverlay
   },
   setup(props, context) {
     const view = ref(null);
@@ -139,7 +120,7 @@ export default {
     const marker = ref("icons/marker.png");
     const markerSelected = ref("icons/marker-selected.png");
 
-    const mapSource = ref("sigpac"); // "sigpac"
+    const mapSource = ref("osm"); // "sigpac"
 
     return {
       projection,
