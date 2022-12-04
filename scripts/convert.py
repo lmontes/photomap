@@ -3,7 +3,7 @@ import pathlib
 import gpxpy
 
 ID = 1
-DATA_DIR = pathlib.Path("gpx")
+DATA_DIR = pathlib.Path("data/gpx")
 
 features = []
 for gpx_filename in DATA_DIR.glob("*.gpx"):
@@ -21,6 +21,8 @@ for gpx_filename in DATA_DIR.glob("*.gpx"):
             "properties": {
                 "name": wp.name,
                 "desc": wp.description if wp.name != wp.description else None,
+                "lat": wp.latitude,
+                "lon": wp.longitude,
                 "images": []
             },
             "geometry": {
