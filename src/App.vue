@@ -6,16 +6,13 @@
         <div class="w-screen h-screen mx-auto">
             <photomap class="w-screen h-screen"></photomap>
         </div>
-        <div id="modals"></div>
     </div>
 </template>
 
 <script>
-
 import photomap from './components/PhotoMap.vue';
 
 export default {
   components: {photomap}
 }
-
 </script>

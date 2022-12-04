@@ -1,63 +1,75 @@
 <template>
-  <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true">
-    <ol-view
-      ref="view"
-      :center="center"
-      :rotation="rotation"
-      :zoom="zoom"
-      :projection="projection"
-    />
+    <ol-map class="w-screen h-screen mx-auto" :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true">
+      <ol-view
+        ref="view"
+        :center="center"
+        :rotation="rotation"
+        :zoom="zoom"
+        :projection="projection"
+      />
 
-    <ol-tile-layer :minZoom="1" :mapMaxZoom="minZoom">
-      <ol-source-osm />
-    </ol-tile-layer>
+      <ol-tile-layer :minZoom="1" :mapMaxZoom="minZoom">
+        <ol-source-osm />
+      </ol-tile-layer>
 
-    <ol-tile-layer
-      v-if="mapSource == 'sigpac'"
-      :minZoom="minZoom"
-      :mapMaxZoom="mapMaxZoom"
-    >
-      <ol-source-wmts
-        :attributions="attribution"
-        :url="url"
-        :matrixSet="matrixSet"
-        :format="format"
-        :layer="layerName"
-        :style="styleName"
+      <ol-tile-layer
+        v-if="mapSource == 'sigpac'"
+        :minZoom="minZoom"
+        :mapMaxZoom="mapMaxZoom"
       >
-      </ol-source-wmts>
-    </ol-tile-layer>
+        <ol-source-wmts
+          :attributions="attribution"
+          :url="url"
+          :matrixSet="matrixSet"
+          :format="format"
+          :layer="layerName"
+          :style="styleName"
+        >
+        </ol-source-wmts>
+      </ol-tile-layer>
 
-    <ol-fullscreen-control />
-    <ol-scaleline-control />
-    <ol-zoom-control />
+      <ol-fullscreen-control />
+      <ol-scaleline-control />
+      <ol-zoom-control />
 
-    <ol-vector-layer :minZoom="minZoom" :mapMaxZoom="mapMaxZoom">
-      <ol-source-vector ref="source" url="data/data.geojson" :format="geoJson">
-        <ol-interaction-snap />
-      </ol-source-vector>
-      <ol-style>
-        <ol-style-icon :src="marker" :scale="0.5"></ol-style-icon>
-      </ol-style>
-    </ol-vector-layer>
+      <ol-vector-layer :minZoom="minZoom" :mapMaxZoom="mapMaxZoom">
+        <ol-source-vector ref="source" url="data/data.geojson" :format="geoJson">
+          <ol-interaction-snap />
+        </ol-source-vector>
+        <ol-style>
+          <ol-style-icon :src="marker" :scale="0.5"></ol-style-icon>
+        </ol-style>
+      </ol-vector-layer>
 
-    <ol-interaction-select
-      @select="featureSelected"
-      :condition="selectCondition"
-    >
-      <ol-style>
-        <ol-style-icon :src="markerSelected" :scale="0.5"></ol-style-icon>
-      </ol-style>
-    </ol-interaction-select>
+      <ol-interaction-select
+        @select="featureSelected"
+        :condition="selectCondition"
+      >
+        <ol-style>
+          <ol-style-icon :src="markerSelected" :scale="0.5"></ol-style-icon>
+        </ol-style>
+      </ol-interaction-select>
 
-    <ol-overlay
-      :position="selectedPosition"
-      v-if="selectedProperties != null"
-      positioning="center"
-    >
-      <detail-overlay :properties="selectedProperties"></detail-overlay>
-    </ol-overlay>
-  </ol-map>
+      <ol-overlay
+        :position="selectedPosition"
+        v-if="selectedProperties != null"
+        positioning="center"
+      >
+        <detail-overlay :properties="selectedProperties"></detail-overlay>
+      </ol-overlay>
+    </ol-map>
+    <Modal v-model="viewModal" :close="closeModal">
+      <div class="modal">
+        <div class="relative max-w-screen max-h-screen">
+          <div class="absolute right-0 top-0">
+            <button class="text-4xl text-white" @click="closeModal">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+        </div>
+        <img class="max-w-screen max-h-screen" src="images/20210624200123.jpg"/>
+      </div>
+    </Modal>
 </template>
 
 <script>
@@ -73,6 +85,14 @@ export default {
   },
   components: {
     DetailOverlay
+  },
+  methods: {
+    showModal(obj) {
+      this.viewModal = true;
+    },
+    closeModal() {
+      this.viewModal = false;
+    },
   },
   setup(props, context) {
     const view = ref(null);
@@ -122,6 +142,8 @@ export default {
 
     const mapSource = ref("osm"); // "sigpac"
 
+    const viewModal = ref(true);
+
     return {
       projection,
       center,
@@ -145,6 +167,7 @@ export default {
       marker,
       markerSelected,
       mapSource,
+      viewModal
     };
   },
 };
