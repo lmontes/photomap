@@ -9,7 +9,7 @@
     </p>
     <div v-if="properties.images.length" class="flex mt-3 gap-x-2">
       <span v-for="image in properties.images" v-bind:key="image.url">
-        <a :href="image.url" target="__blank">
+        <a @click="imageClicked(image.url)" >
           <img class="h-28" :src="image.thumbnail"/>
         </a>
       </span>
@@ -22,6 +22,11 @@
     name: "detail-overlay",
     props: {
       properties: Object,
+    },
+    methods: {
+      imageClicked(url) {
+        this.$emit("image-clicked", url);
+      }
     },
     setup(props, context) {}
   };

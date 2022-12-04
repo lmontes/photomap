@@ -55,19 +55,20 @@
         v-if="selectedProperties != null"
         positioning="center"
       >
-        <detail-overlay :properties="selectedProperties"></detail-overlay>
+        <detail-overlay :properties="selectedProperties" @image-clicked="showModal">
+        </detail-overlay>
       </ol-overlay>
     </ol-map>
     <Modal v-model="viewModal" :close="closeModal">
-      <div class="modal">
-        <div class="relative max-w-screen max-h-screen">
-          <div class="absolute right-0 top-0">
+      <div class="">
+        <div class="relative">
+          <div class="absolute right-0 top-0 bg-black p-1">
             <button class="text-4xl text-white" @click="closeModal">
               <i class="fa-solid fa-circle-xmark"></i>
             </button>
           </div>
         </div>
-        <img class="max-w-screen max-h-screen" src="images/20210624200123.jpg"/>
+        <img class="max-w-screen max-h-screen" :src="imageUrl"/>
       </div>
     </Modal>
 </template>
@@ -80,14 +81,14 @@ import DetailOverlay from './DetailOverlay.vue';
 
 export default {
   name: "photomap",
-  props: {
-    refcat: String,
-  },
+  props: {},
   components: {
     DetailOverlay
   },
   methods: {
-    showModal(obj) {
+    showModal(url) {
+      console.log(url);
+      this.imageUrl = url; // this.selectedProperties.images[0].url;
       this.viewModal = true;
     },
     closeModal() {
@@ -142,7 +143,8 @@ export default {
 
     const mapSource = ref("osm"); // "sigpac"
 
-    const viewModal = ref(true);
+    const imageUrl = ref("");
+    const viewModal = ref(false);
 
     return {
       projection,
@@ -167,6 +169,7 @@ export default {
       marker,
       markerSelected,
       mapSource,
+      imageUrl,
       viewModal
     };
   },
