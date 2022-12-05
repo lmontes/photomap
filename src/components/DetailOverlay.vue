@@ -8,8 +8,8 @@
       <i class="fa-solid fa-location-dot"></i> {{ properties.lat }}, {{properties.lon}}
     </p>
     <div v-if="properties.images.length" class="flex mt-3 gap-x-2">
-      <span v-for="image in properties.images" v-bind:key="image.url">
-        <a @click="imageClicked(image.url)" >
+      <span v-for="(image, idx) in properties.images" v-bind:key="image.url">
+        <a @click="imageClicked(idx)" >
           <img class="h-28" :src="image.thumbnail"/>
         </a>
       </span>
@@ -24,8 +24,8 @@
       properties: Object,
     },
     methods: {
-      imageClicked(url) {
-        this.$emit("image-clicked", url);
+      imageClicked(index) {
+        this.$emit("image-clicked", index);
       }
     },
     setup(props, context) {}

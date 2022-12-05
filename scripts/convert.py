@@ -1,14 +1,19 @@
 import json
 import pathlib
 import gpxpy
+import numpy as np
 import pandas as pd
 
-df = pd.read_csv("data/metadata.csv")
-df[["lat","lon"]] = df[["lat","lon"]].fillna(method="ffill")
 
 ID = 1
 TOLERANCE = 0.000001
 DATA_DIR = pathlib.Path("data/gpx")
+
+
+df = pd.read_csv("data/metadata.csv")
+df[["lat","lon"]] = df[["lat","lon"]].fillna(method="ffill")
+df = df.replace([np.nan], [None])
+
 
 features = []
 for gpx_filename in DATA_DIR.glob("*.gpx"):
@@ -29,12 +34,13 @@ for gpx_filename in DATA_DIR.glob("*.gpx"):
 
         images = []
         for r in dfm.to_dict(orient="records"):
-            if not pd.isna(r["image"]):
+            if r["image"]:
                 images.append({
                     "url": f"images/{r['image']}",
-                    "thumbnail": f"thumbnails/{r['image']}"
+                    "thumbnail": f"thumbnails/{r['image']}",
+                    "desc": r["desc"]
                 })
-        
+
         feat = {
             "type": "Feature",
             "id": str(ID),

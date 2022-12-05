@@ -60,16 +60,8 @@
       </ol-overlay>
     </ol-map>
     <Modal v-model="viewModal" :close="closeModal">
-      <div class="">
-        <div class="relative">
-          <div class="absolute right-0 top-0 bg-black p-1">
-            <button class="text-4xl text-white" @click="closeModal">
-              <i class="fa-solid fa-circle-xmark"></i>
-            </button>
-          </div>
-        </div>
-        <img class="max-w-screen max-h-screen" :src="imageUrl"/>
-      </div>
+      <photo-viewer :images="selectedProperties.images" :close="closeModal" :index="imageIndex">
+      </photo-viewer>
     </Modal>
 </template>
 
@@ -78,22 +70,23 @@ import { ref, inject } from "vue";
 import { fromLonLat } from "ol/proj";
 import { GeoJSON } from "ol/format";
 import DetailOverlay from './DetailOverlay.vue';
+import PhotoViewer from "./PhotoViewer.vue";
 
 export default {
   name: "photomap",
   props: {},
   components: {
-    DetailOverlay
+    DetailOverlay,
+    PhotoViewer
   },
   methods: {
-    showModal(url) {
-      console.log(url);
-      this.imageUrl = url; // this.selectedProperties.images[0].url;
+    showModal(index) {
+      this.imageIndex = index;
       this.viewModal = true;
     },
     closeModal() {
       this.viewModal = false;
-    },
+    }
   },
   setup(props, context) {
     const view = ref(null);
@@ -143,8 +136,8 @@ export default {
 
     const mapSource = ref("osm"); // "sigpac"
 
-    const imageUrl = ref("");
     const viewModal = ref(false);
+    const imageIndex = ref(0);
 
     return {
       projection,
@@ -169,8 +162,8 @@ export default {
       marker,
       markerSelected,
       mapSource,
-      imageUrl,
-      viewModal
+      viewModal,
+      imageIndex
     };
   },
 };
