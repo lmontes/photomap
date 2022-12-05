@@ -1,11 +1,11 @@
 <template>
   <div class="bg-black p-3 rounded">
-    <h3 class="text-xl text-white">{{ properties.name }}</h3>
+    <h3 class="text-xl text-white">{{properties.name}}</h3>
     <p v-if="properties.desc !== null" class="text-slate-300">
-      {{ properties.desc }}
+      {{properties.desc}}
     </p>
     <p class="text-sm text-slate-500">
-      <i class="fa-solid fa-location-dot"></i> {{ properties.lat }}, {{properties.lon}}
+      <i class="fa-solid fa-location-dot"></i> {{properties.lat.toFixed(6)}}, {{properties.lon.toFixed(6)}}
     </p>
     <div v-if="properties.images.length" class="flex mt-3 gap-x-2">
       <span v-for="(image, idx) in properties.images" v-bind:key="image.url">
