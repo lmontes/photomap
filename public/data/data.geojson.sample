@@ -3,26 +3,36 @@
   "features": [
     {
       "type": "Feature",
-      "id": "",
+      "id": "1",
       "properties": {
-        "name": "Pino de la Atalayuela",
+        "name": "Pino de la Berzala",
         "symbol": "Tree",
-        "desc": "Tronco de pino singular junto a la casa de la Atalayuela",    
-        "lat": -1.221552,
-        "lon": 39.521876,
+        "desc": "Ejemplar de pino pi\u00f1onero",
+        "lat": 39.534204,
+        "lon": -1.151727,
         "images": [
           {
-            "name": "Pino",
-            "url": "images/pino.jpg",
-            "thumbnail": "thumbnails/pino.jpg"
+            "name": "Pino de la Berzala",
+            "url": "images/20220719203026.jpg",
+            "thumbnail": "thumbnails/20220719203026.jpg"
+          },
+          {
+            "name": "Pino de la Berzala",
+            "url": "images/20220719203520.jpg",
+            "thumbnail": "thumbnails/20220719203520.jpg"
+          },
+          {
+            "name": "Pino de la Berzala",
+            "url": "images/20220719203303.jpg",
+            "thumbnail": "thumbnails/20220719203303.jpg"
           }
         ]
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -1.221552,
-          39.521876
+          -1.151727,
+          39.534204
         ]
       }
     }

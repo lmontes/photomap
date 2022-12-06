@@ -9,16 +9,36 @@ import VueUniversalModal from 'vue-universal-modal';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { 
-    faLocationDot, faHome, faFaucet, faArchway, faThumbTack, faTree, faMountain, faWater
+    faLocationDot,
+    faHome,
+    faFaucet,
+    faArchway,
+    faThumbTack,
+    faTree,
+    faMountain,
+    faWater,
+    faChevronLeft,
+    faChevronRight,
+    faXmark
 } from '@fortawesome/free-solid-svg-icons';
 
 const app = createApp(App);
 
 app.use(OpenLayersMap)
 
-library.add(
-    [faLocationDot, faHome, faFaucet, faArchway, faThumbTack, faTree, faMountain, faWater ]
-);
+library.add([
+    faLocationDot,
+    faHome,
+    faFaucet,
+    faArchway,
+    faThumbTack,
+    faTree,
+    faMountain,
+    faWater,
+    faChevronLeft,
+    faChevronRight,
+    faXmark
+]);
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.use(VueUniversalModal, {teleportTarget: '#modals'});

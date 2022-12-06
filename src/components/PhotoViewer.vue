@@ -34,7 +34,7 @@
         "
         @click="next(-1)"
       >
-        <i class="fa-solid fa-chevron-left"></i>
+        <font-awesome-icon icon="fa-solid fa-chevron-left"/>
       </a>
       <a
         v-if="this.currentIndex < this.images.length - 1"
@@ -53,7 +53,7 @@
         "
         @click="next(1)"
       >
-        <i class="fa-solid fa-chevron-right"></i>
+      <font-awesome-icon icon="fa-solid fa-chevron-right"/>
       </a>
       <a
         class="
@@ -72,7 +72,7 @@
         "
         @click="close"
       >
-        <i class="fa-solid fa-xmark"></i>
+      <font-awesome-icon icon="fa-solid fa-xmark"/>
       </a>
     </div>
   </div>

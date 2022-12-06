@@ -134,7 +134,7 @@ export default {
     const marker = ref("icons/marker.png");
     const markerSelected = ref("icons/marker-selected.png");
 
-    const mapSource = ref("osm"); // "sigpac"
+    const mapSource = ref("sigpac"); // "sigpac"
 
     const viewModal = ref(false);
     const imageIndex = ref(0);
