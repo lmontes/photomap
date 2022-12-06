@@ -53,7 +53,7 @@
       <ol-overlay
         :position="selectedPosition"
         v-if="selectedProperties != null"
-        positioning="center"
+        positioning="top-center"
       >
         <detail-overlay :properties="selectedProperties" @image-clicked="showModal">
         </detail-overlay>

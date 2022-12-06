@@ -3,7 +3,7 @@
     <div class="relative">
       <div class="p-2 bg-white">
         <img class="w-full object-cover" :src="images[currentIndex].url" />
-        <div v-if="images[currentIndex].desc"
+        <div v-if="images[currentIndex].name"
           class="
             text-center text-white
             font-light
@@ -13,7 +13,7 @@
           "
         >
           <p id="caption">
-            {{ images[currentIndex].desc }}
+            {{images[currentIndex].name}}
           </p>
         </div>
       </div>

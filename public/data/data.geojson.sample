@@ -6,13 +6,13 @@
       "id": "",
       "properties": {
         "name": "Pino de la Atalayuela",
-        "desc": "Tronco de pino singular junto a la casa de la Atalayuela",
+        "symbol": "Tree",
+        "desc": "Tronco de pino singular junto a la casa de la Atalayuela",    
+        "lat": -1.221552,
+        "lon": 39.521876,
         "images": [
           {
-            "url": "images/casa.jpg",
-            "thumbnail": "thumbnails/casa.jpg"
-          },
-          {
+            "name": "Pino",
             "url": "images/pino.jpg",
             "thumbnail": "thumbnails/pino.jpg"
           }
