@@ -37,7 +37,7 @@
           <ol-interaction-snap />
         </ol-source-vector>
         <ol-style>
-          <ol-style-icon :src="marker" :scale="0.5"></ol-style-icon>
+          <ol-style-icon :src="marker" :scale="0.4"></ol-style-icon>
         </ol-style>
       </ol-vector-layer>
 
@@ -46,7 +46,7 @@
         :condition="selectCondition"
       >
         <ol-style>
-          <ol-style-icon :src="markerSelected" :scale="0.5"></ol-style-icon>
+          <ol-style-icon :src="markerSelected" :scale="0.4"></ol-style-icon>
         </ol-style>
       </ol-interaction-select>
 
