@@ -34,7 +34,7 @@ Al hacer click en cualquiera de las fotos es posible ver las imágenes en mayor 
 
 4. Preparar fichero GPX con las coordenadas e información de los diferentes puntos de interés (waypoints). El fichero [data/points.gpx.sample](data/points.gpx.sample) contiene un ejemplo de punto de interés. Cada punto puede tener los siguientes campos:
    * **lat**: latitud
-   * **lon**: longitu
+   * **lon**: longitud
    * **ele**: altura sobre el nivel del mar
    * **name**: nombre del punto de interés
    * **desc**: descripción del punto de interés
