@@ -21,6 +21,8 @@ Al hacer click en cualquiera de las fotos es posible ver las imágenes en mayor 
 1. Instalar librerías de Python necesarias:
 
     ```bash
+    python -m venv .venv
+    source .venv/bin/activate
     pip install -r requirements.txt
     ```
 
