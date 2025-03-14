@@ -16,13 +16,13 @@
     "ol": "^7.1.0",
     "vue": "3.3.11",
     "vue-universal-modal": "^1.1.4",
-    "vue3-openlayers": "^0.1.70"
+    "vue3-openlayers": "^0.1.33"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
+    "@vitejs/plugin-vue": "^5.2.1",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
-    "vite": "^4.5.1"
+    "vite": "^6.2.2"
   }
 }
