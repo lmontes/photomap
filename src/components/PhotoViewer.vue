@@ -18,7 +18,7 @@
         </div>
       </div>
       <a
-        v-if="this.currentIndex > 0"
+        v-if="currentIndex > 0"
         class="
           absolute
           left-0
@@ -37,7 +37,7 @@
         <font-awesome-icon icon="fa-solid fa-chevron-left"/>
       </a>
       <a
-        v-if="this.currentIndex < this.images.length - 1"
+        v-if="currentIndex < images.length - 1"
         class="
           absolute
           right-0
@@ -78,27 +78,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "photo-viewer",
-  props: {
-    images: Array,
-    index: Number,
-    close: Function,
-  },
-  data() {
-    return {
-      currentIndex: this.index,
-    };
-  },
-  methods: {
-    next(n) {
-      if (
-        this.currentIndex + n >= 0 &&
-        this.currentIndex + n < this.$props.images.length
-      )
-        this.currentIndex += n;
-    },
-  },
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps({
+  images: Array,
+  index: Number,
+  close: Function,
+});
+
+const currentIndex = ref(props.index);
+
+const next = (n) => {
+  const nextIndex = currentIndex.value + n;
+  if (nextIndex >= 0 && nextIndex < props.images.length) {
+    currentIndex.value = nextIndex;
+  }
 };
 </script>

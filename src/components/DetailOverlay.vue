@@ -20,31 +20,27 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: "detail-overlay",
-    props: {
-      properties: Object,
-    },
-    methods: {
-      imageClicked(index) {
-        this.$emit("image-clicked", index);
-      },
-      symbolToIcon(symbol) {
-        var mapping = {
-          "House": "fa-solid fa-house",
-          "Fountain": "fa-solid fa-faucet",
-          "Bridge": "fa-solid fa-archway",
-          "Tree": "fa-solid fa-tree",
-          "Mountain": "fa-solid fa-mountain",
-          "Water": "fa-solid fa-water"
-        }
+<script setup>
+const props = defineProps({
+  properties: Object,
+});
 
-        if (mapping[symbol] !== undefined)
-          return mapping[symbol];
-        return "fa-solid fa-thumbtack";
-      }
-    },
-    setup(props, context) {}
+const emit = defineEmits(["image-clicked"]);
+
+const imageClicked = (index) => {
+  emit("image-clicked", index);
+};
+
+const symbolToIcon = (symbol) => {
+  const mapping = {
+    "House": "fa-solid fa-house",
+    "Fountain": "fa-solid fa-faucet",
+    "Bridge": "fa-solid fa-archway",
+    "Tree": "fa-solid fa-tree",
+    "Mountain": "fa-solid fa-mountain",
+    "Water": "fa-solid fa-water"
   };
+
+  return mapping[symbol] ?? "fa-solid fa-thumbtack";
+};
 </script>

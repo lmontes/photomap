@@ -6,10 +6,6 @@
   </div>
 </template>
 
-<script>
-import photomap from './components/PhotoMap.vue';
-
-export default {
-  components: {photomap}
-}
+<script setup>
+import Photomap from './components/PhotoMap.vue';
 </script>
