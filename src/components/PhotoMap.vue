@@ -108,7 +108,7 @@ const wmtsOptions = ref(null);
 
 onMounted(async () => {
   const response = await fetch(
-    "http://www.ign.es/wmts/pnoa-ma?Service=WMTS&Request=GetCapabilities&Version=1.0.0"
+    "https://www.ign.es/wmts/pnoa-ma?Service=WMTS&Request=GetCapabilities&Version=1.0.0"
   );
   const text = await response.text();
   const parser = new WMTSCapabilities();
@@ -120,7 +120,7 @@ onMounted(async () => {
 
   if (options) {
     options.attributions =
-      'Tiles © <a href="http://www.ign.es" target="_blank">IGN</a>';
+      'Tiles © <a href="https://www.ign.es" target="_blank">IGN</a>';
     wmtsOptions.value = options;
     const resolutions = options.tileGrid.getResolutions();
     maxZoom.value = resolutions.length - 1;
