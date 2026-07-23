@@ -21,9 +21,7 @@ Al hacer click en cualquiera de las fotos es posible ver las imágenes en mayor 
 1. Instalar librerías de Python necesarias:
 
     ```bash
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install -r requirements.txt
+    uv sync
     ```
 
 2. Guardar fotografías en el directorio [data/images](data/images/), se recomienda que el nombre tenga el formato `yyyymmddhhMMss.jpg`.
@@ -31,7 +29,7 @@ Al hacer click en cualquiera de las fotos es posible ver las imágenes en mayor 
 3. Ejecutar script image-processing para generar miniaturas e imágenes para la web. Estas se guardarán en [public/images](public/images/) y [public/thumbnails](public/thumbnails/)
 
     ```bash
-    python scripts/image-processing.py
+    uv run scripts/image-processing.py
     ```
 
 4. Preparar fichero GPX con las coordenadas e información de los diferentes puntos de interés (waypoints). El fichero [data/points.gpx.sample](data/points.gpx.sample) contiene un ejemplo de punto de interés. Cada punto puede tener los siguientes campos:
@@ -46,7 +44,7 @@ Al hacer click en cualquiera de las fotos es posible ver las imágenes en mayor 
 5. Ejecutar script para procesar el fichero GPX y generar el fichero GeoJSON usado por la aplicación.
 
     ```bash
-    python scripts/convert.py > public/data/data.geojson
+    uv run scripts/convert.py > public/data/data.geojson
     ```
 
 ## Ejecutar en local
@@ -54,11 +52,11 @@ Al hacer click en cualquiera de las fotos es posible ver las imágenes en mayor 
 1. Instalar dependencias
 
     ```bash
-    npm install
+    pnpm install
     ```
 
 2. Iniciar app en modo desarrollo
 
     ```bash
-    npm run dev
+    pnpm run dev
     ```
